@@ -52,13 +52,19 @@ public class DomainFinder {
         }
     }
 
-    public TreeMap<Integer, String> getDomainList() {
-        Map<Integer, String> map = new HashMap<>();
+    public Map<String, Integer> getDomainList() {
+        Map<String, Integer> map = new HashMap<>();
         for (String domain : domainList) {
-            map.put(Collections.frequency(domainList, domain), domain);
+            map.put(domain, Collections.frequency(domainList, domain));
         }
-        TreeMap<Integer, String> sorted = new TreeMap<>(map);
 
-        return sorted;
+//        Collections.sort(map, new Comparator<Integer>() {
+//            @Override
+//            public int compare(0, 1) {
+//                return Integer.compare(0, 1);
+//            }
+//        });
+
+        return map;
     }
 }

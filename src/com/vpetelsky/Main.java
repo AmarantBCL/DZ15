@@ -25,16 +25,9 @@ public class Main {
 
     private static void task2() {
         DomainFinder df = new DomainFinder();
-        TreeMap<Integer, String> map = df.getDomainList();
-
-        for(Map.Entry<Integer, String> item : map.entrySet()){
-            System.out.printf("Key: %d  Value: %s \n", item.getKey(), item.getValue());
+        Map<String, Integer> map = df.getDomainList();
+        for (Map.Entry<String, Integer> item : map.entrySet()) {
+            System.out.printf("Key: %s  Value: %d \n", item.getKey(), item.getValue());
         }
-//        int i = 1;
-//        for (String s : map.keySet()) {
-//            //System.out.println(i + ") " + s);
-//            i++;
-//        }
-
     }
 }
