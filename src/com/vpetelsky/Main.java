@@ -1,11 +1,13 @@
 package com.vpetelsky;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Main {
 
     public static void main(String[] args) {
-        task1();
+        //task1();
         System.out.println();
         task2();
     }
@@ -23,12 +25,16 @@ public class Main {
 
     private static void task2() {
         DomainFinder df = new DomainFinder();
-        List<String> list = df.getDomainList();
-        int i = 1;
-        for (String s : list) {
-            //System.out.println(i + ") " + s);
-            i++;
+        TreeMap<Integer, String> map = df.getDomainList();
+
+        for(Map.Entry<Integer, String> item : map.entrySet()){
+            System.out.printf("Key: %d  Value: %s \n", item.getKey(), item.getValue());
         }
+//        int i = 1;
+//        for (String s : map.keySet()) {
+//            //System.out.println(i + ") " + s);
+//            i++;
+//        }
 
     }
 }
