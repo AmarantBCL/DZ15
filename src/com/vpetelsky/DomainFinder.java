@@ -52,19 +52,28 @@ public class DomainFinder {
         }
     }
 
-    public Map<String, Integer> getDomainList() {
+    private Map<String, Integer> createMap() {
         Map<String, Integer> map = new HashMap<>();
-        for (String domain : domainList) {
-            map.put(domain, Collections.frequency(domainList, domain));
+        for (String name : domainList) {
+            if (map.containsKey(name)) {
+                int count = map.get(name) + 1;
+                map.put(name, count);
+            } else {
+                map.put(name, 1);
+            }
         }
 
-//        Collections.sort(map, new Comparator<Integer>() {
-//            @Override
-//            public int compare(0, 1) {
-//                return Integer.compare(0, 1);
-//            }
-//        });
-
         return map;
+    }
+    
+    public List<Domain> getDomainList() {
+        List<Domain> list = new ArrayList<>();
+        Map<String, Integer> map = createMap();
+        for (String key : map.keySet()) {
+            list.add(new Domain(key, map.get(key)));
+        }
+        Collections.sort(list, (d1, d2) -> d2.getCount() - d1.getCount());
+
+        return list;
     }
 }
